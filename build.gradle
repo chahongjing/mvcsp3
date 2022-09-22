@@ -1,0 +1,80 @@
+//plugins {
+//    id 'org.springframework.boot' version '3.0.0-SNAPSHOT'
+//    id 'io.spring.dependency-management' version '1.0.13.RELEASE'
+//    id 'java'
+//}
+//配置所有项目公共内容
+allprojects {
+    //指定需要的插件
+    //指定语言
+    apply plugin: 'java'
+    //指定编辑器
+    apply plugin: 'idea'
+    //配置项目信息
+    group 'com.zjy'
+    version '0.0.1-SNAPSHOT'
+
+    //配置仓库
+    repositories{
+        mavenLocal()
+        maven { url 'https://maven.aliyun.com/repository/public/' }
+        mavenCentral()
+        maven { url 'https://repo.spring.io/milestone' }
+        maven { url 'https://repo.spring.io/snapshot' }
+    }
+}
+
+//配置子工程
+subprojects {
+    //指定编译版本
+    sourceCompatibility = 18
+    targetCompatibility = 18
+    //配置字符编码
+    tasks.withType(JavaCompile) {
+        options.encoding = 'UTF-8'
+    }
+
+    //配置全局依赖版本信息
+//    ext {
+//        junitVersion = '4.12'
+//    }
+
+    //配置子模块依赖
+    dependencies {
+//        testCompile group: 'junit', name: 'junit', version:"${junitVersion}"
+    }
+}
+
+
+//
+//group = 'com.zjy'
+//version = '0.0.1-SNAPSHOT'
+//sourceCompatibility = '18'
+//
+//configurations {
+//    compileOnly {
+//        extendsFrom annotationProcessor
+//    }
+//}
+//
+//repositories {
+//    maven { url 'https://maven.aliyun.com/repository/public/' }
+//    mavenCentral()
+//    maven { url 'https://repo.spring.io/milestone' }
+//    maven { url 'https://repo.spring.io/snapshot' }
+//}
+//
+//dependencies {
+//    implementation 'org.springframework.boot:spring-boot-starter-web'
+//    compileOnly 'org.projectlombok:lombok'
+//    annotationProcessor 'org.projectlombok:lombok'
+//    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+//}
+//
+//tasks.named('test') {
+//    useJUnitPlatform()
+//}
+//
+//test{
+////    enabled(false)
+//}
