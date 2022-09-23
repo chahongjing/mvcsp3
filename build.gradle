@@ -1,8 +1,18 @@
-//plugins {
-//    id 'org.springframework.boot' version '3.0.0-SNAPSHOT'
-//    id 'io.spring.dependency-management' version '1.0.13.RELEASE'
-//    id 'java'
-//}
+plugins {
+    id 'org.springframework.boot' version '3.0.0-SNAPSHOT'
+    id 'io.spring.dependency-management' version '1.0.13.RELEASE'
+    id 'java'
+}
+group = 'com.zjy'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = JavaVersion.VERSION_18
+targetCompatibility = JavaVersion.VERSION_18
+jar.enabled = false
+///* 需要org.springframework.boot插件 不需要打包成可执行的jar*/
+bootJar.enabled = false
+ext { // 自定义扩展 字段 这里定义版本信息
+    jjwtVersion = '0.11.1'
+}
 //配置所有项目公共内容
 allprojects {
     //指定需要的插件
@@ -10,9 +20,13 @@ allprojects {
     apply plugin: 'java'
     //指定编辑器
     apply plugin: 'idea'
+    apply plugin: 'org.springframework.boot'
+    apply plugin: 'io.spring.dependency-management'
     //配置项目信息
     group 'com.zjy'
     version '0.0.1-SNAPSHOT'
+    sourceCompatibility = 18
+    targetCompatibility = 18
 
     //配置仓库
     repositories{
@@ -21,6 +35,11 @@ allprojects {
         mavenCentral()
         maven { url 'https://repo.spring.io/milestone' }
         maven { url 'https://repo.spring.io/snapshot' }
+    }
+    /* 添加通用依赖 */
+    dependencies {
+//        implementation 'org.springframework.boot:spring-boot-starter-web'
+//        testImplementation 'org.springframework.boot:spring-boot-starter-test'
     }
 }
 
@@ -45,6 +64,9 @@ subprojects {
     }
 }
 
+dependencies {
+    implementation project(':web')
+}
 
 //
 //group = 'com.zjy'

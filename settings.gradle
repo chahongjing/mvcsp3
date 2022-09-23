@@ -6,4 +6,4 @@ pluginManagement {
     }
 }
 rootProject.name = 'mvcsp3'
-include 'web'
+include "web", "dao"
