@@ -25,10 +25,10 @@ archivesBaseName = 'webmvc'
 
 dependencies {
     implementation project(":dao")
-    implementation 'org.springframework.boot:spring-boot-starter-web'
-    compileOnly 'org.projectlombok:lombok'
-    annotationProcessor 'org.projectlombok:lombok'
-    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    implementation 'org.springframework.boot:spring-boot-starter-web:3.0.0-SNAPSHOT'
+    compileOnly 'org.projectlombok:lombok:1.18.24'
+    annotationProcessor 'org.projectlombok:lombok:1.18.24'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test:3.0.0-SNAPSHOT'
 }
 
 //tasks.named('test') {
@@ -36,4 +36,10 @@ dependencies {
 //}
 test{
 //    enabled(false)
+}
+
+// 构建指定过滤变量 sudo sh ./gradlew build -Dprofile=dev
+def profile = System.getProperty("profile") ?: 'dev'
+processResources {
+    filter org.apache.tools.ant.filters.ReplaceTokens, tokens:["profiles.active": profile]
 }
