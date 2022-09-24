@@ -1,8 +1,8 @@
-//plugins {
-//    id 'org.springframework.boot' version '3.0.0-SNAPSHOT'
-//    id 'io.spring.dependency-management' version '1.0.13.RELEASE'
-//    id 'java'
-//}
+plugins {
+    id 'org.springframework.boot' version '3.0.0-SNAPSHOT'
+    id 'io.spring.dependency-management' version '1.0.13.RELEASE'
+    id 'java'
+}
 archivesBaseName = 'webmvc'
 //jar.enabled = true
 ///* 需要org.springframework.boot插件 不需要打包成可执行的jar*/
