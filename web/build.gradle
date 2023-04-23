@@ -1,7 +1,7 @@
 plugins {
-    id 'org.springframework.boot' version '3.0.3'
-    id 'io.spring.dependency-management' version '1.0.15.RELEASE'
     id 'java'
+    id 'org.springframework.boot' version '3.0.5'
+    id 'io.spring.dependency-management' version '1.1.0'
 }
 archivesBaseName = 'webmvc'
 //jar.enabled = true
@@ -25,15 +25,16 @@ archivesBaseName = 'webmvc'
 
 dependencies {
     implementation project(":dao")
-    implementation 'org.springframework.boot:spring-boot-starter-web:3.0.0-SNAPSHOT'
+    implementation 'org.springframework.boot:spring-boot-starter-web:3.0.5'
+    implementation 'org.springframework.boot:spring-boot-starter-webflux:3.0.5'
     compileOnly 'org.projectlombok:lombok:1.18.24'
     annotationProcessor 'org.projectlombok:lombok:1.18.24'
     testImplementation 'org.springframework.boot:spring-boot-starter-test:3.0.0-SNAPSHOT'
 }
 
-//tasks.named('test') {
-//    useJUnitPlatform()
-//}
+tasks.named('test') {
+    useJUnitPlatform()
+}
 test{
 //    enabled(false)
 }
